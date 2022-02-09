@@ -10,7 +10,7 @@ export class Customer {
   //address?: Address;
   active: boolean = false;
 
-  constructor(properties?: Customer) {
+/*   constructor(properties?: Customer) {
     if (properties) {
       this.id = properties.id || 0;
       this.firstName = properties.firstName || '';
@@ -20,5 +20,5 @@ export class Customer {
       this.active = properties.active || false;
     }
   }
-
+ */
 }

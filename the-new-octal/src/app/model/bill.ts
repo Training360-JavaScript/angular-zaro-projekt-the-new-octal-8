@@ -5,7 +5,7 @@ export class Bill {
   amount: number = 0;
   status: string = ''; //"new|paid"
 
-  constructor(properties?: Bill) {
+/*   constructor(properties?: Bill) {
     if (properties) {
       this.id = properties.id || 0;
       this.orderID = properties.orderID || 0;
@@ -13,5 +13,5 @@ export class Bill {
       this.status = properties.status || '';
     }
   }
-
+ */
 }

@@ -9,7 +9,7 @@ export class Product {
   featured: boolean = false;
   active: boolean = false;
 
-  constructor(properties?: Product) {
+/*   constructor(properties?: Product) {
     if (properties) {
       this.id = properties.id || 0;
       this.name = properties.name || '';
@@ -21,4 +21,5 @@ export class Product {
       this.active = properties.active || false;
     }
   }
+ */
 }

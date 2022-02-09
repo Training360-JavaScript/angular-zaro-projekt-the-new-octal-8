@@ -1,4 +1,4 @@
-# Angular Záró Csapatprojekt
+# Angular Záró Csapatprojekt 😀
 
 ## Feladat
 Készítsetek egy adminfelületet Angular segítségével a megadott 

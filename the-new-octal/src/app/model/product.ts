@@ -9,17 +9,4 @@ export class Product {
   featured: boolean = false;
   active: boolean = false;
 
-/*   constructor(properties?: Product) {
-    if (properties) {
-      this.id = properties.id || 0;
-      this.name = properties.name || '';
-      this.type = properties.type || '';
-      this.catID = properties.catID || 0;
-      this.description = properties.description || '';
-      this.price = properties.price || 0;
-      this.featured = properties.featured || false;
-      this.active = properties.active || false;
-    }
-  }
- */
 }

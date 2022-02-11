@@ -10,6 +10,8 @@ import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { ProductsComponent } from './page/products/products.component';
+import { DatarestructurePipe } from './pipe/datarestructure.pipe';
+import { ListingTableComponent } from './common/listing-table/listing-table.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProductsComponent } from './page/products/products.component';
     FooterComponent,
     FilterPipe,
     SorterPipe,
-    ProductsComponent
+    ProductsComponent,
+    DatarestructurePipe,
+    ListingTableComponent
   ],
   imports: [
     BrowserModule,

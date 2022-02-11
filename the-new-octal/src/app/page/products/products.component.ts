@@ -14,11 +14,14 @@ export class ProductsComponent implements OnInit {
     {"id":4,"name":"Pork - Bones","type":"Framing (Steel)","catID":10,"description":"Integumentary Integrity Assessment of Musculosk Low Back/LE","price":71,"featured":true,"active":true},
     {"id":5,"name":"Miso Paste White","type":"Ornamental Railings","catID":4,"description":"Electrocochleography Assess w Electrophysiologic Equip","price":64,"featured":true,"active":false}
   ];
-  keys: any = Object.keys(this.list[0])
+
+  /* keys: any = Object.keys(this.list[0])
   .map
   (
     item => item.toUpperCase()
-  );
+  ); */
+
+
 
   constructor() { }
 

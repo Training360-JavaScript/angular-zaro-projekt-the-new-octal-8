@@ -9,6 +9,7 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
+import { ProductsComponent } from './page/products/products.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SorterPipe } from './pipe/sorter.pipe';
     SidebarComponent,
     FooterComponent,
     FilterPipe,
-    SorterPipe
+    SorterPipe,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

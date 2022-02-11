@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'filter'
 })
-export class FilterPipe<T> implements PipeTransform {
+export class FilterPipe<T extends {[key: string]: any}> implements PipeTransform {
 
   /**
    * A kapott tömb szűrése a szűrőkifejezés alapján.

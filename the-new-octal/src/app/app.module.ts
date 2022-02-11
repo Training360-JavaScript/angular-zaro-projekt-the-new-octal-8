@@ -7,6 +7,8 @@ import { HomeComponent } from './page/home/home.component';
 import { HeaderComponent } from './common/header/header.component';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { FooterComponent } from './common/footer/footer.component';
     HomeComponent,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    FilterPipe,
+    SorterPipe
   ],
   imports: [
     BrowserModule,

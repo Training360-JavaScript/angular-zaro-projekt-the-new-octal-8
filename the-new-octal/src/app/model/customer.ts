@@ -7,7 +7,6 @@ export class Customer {
   lastName: string = '';
   email: string = '';
   address: Address = new Address();
-  //address?: Address;
   active: boolean = false;
 
 /*   constructor(properties?: Customer) {

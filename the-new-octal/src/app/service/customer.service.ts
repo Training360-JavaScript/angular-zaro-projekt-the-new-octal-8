@@ -8,10 +8,10 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService extends BaseService<Customer> { //itt megadom a generikus T- helyébe a Customer-t
+export class CustomerService extends BaseService<Customer> {
 
   constructor(
-    public override http: HttpClient, //" public override" nélkül is megy
+    public override http: HttpClient,
   ) {
     super(http);
     this.entityName = 'customer';

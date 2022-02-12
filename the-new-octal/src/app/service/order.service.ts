@@ -12,7 +12,7 @@ export class OrderService extends BaseService<Order>{
     public override http: HttpClient
   ) {
     super(http);
-    this.entityName = 'product';
+    this.entityName = 'order';
    }
 
 }

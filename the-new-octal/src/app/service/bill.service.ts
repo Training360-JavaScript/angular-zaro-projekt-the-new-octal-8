@@ -6,7 +6,7 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class BillService extends  BaseService<Bill>{
+export class BillService extends BaseService<Bill>{
 
   constructor(
     public override http: HttpClient

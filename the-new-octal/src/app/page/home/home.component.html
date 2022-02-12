@@ -7,7 +7,15 @@ Még nem fizetett rendelések száma.
 Még nem fizetett számlák összege.
 Opcionális: ugyanezen adatok grafikonon történő megjelenítése.
 Például a rendelések grafikon külön oszlopokban mutatja a különböző státuszú rendelések számát,
-vagy a számlák összegét láthatjuk státuszuk szerint. -->
+vagy a számlák összegét láthatjuk státuszuk szerint.
+
+https://nettuts.hu/jms/newoctal/address
+https://nettuts.hu/jms/newoctal/bill
+https://nettuts.hu/jms/newoctal/category
+https://nettuts.hu/jms/newoctal/customer
+https://nettuts.hu/jms/newoctal/order
+https://nettuts.hu/jms/newoctal/product
+-->
 <!--
 =========================================================
 Material Dashboard - v2.1.2
@@ -28,7 +36,7 @@ The above copyright notice and this permission notice shall be included in all c
               <i class="material-icons">inventory_2</i>
             </div>
             <p class="card-category">Aktív termékek száma</p>
-            <h3 class="card-title">49
+            <h3 class="card-title">{{activeProducts}}
               <small>db</small>
             </h3>
           </div>
@@ -47,7 +55,7 @@ The above copyright notice and this permission notice shall be included in all c
               <i class="material-icons">people</i>
             </div>
             <p class="card-category">Aktív vásárlók száma</p>
-            <h3 class="card-title">325</h3>
+            <h3 class="card-title">{{ activeCustomers }}</h3>
           </div>
           <div class="card-footer">
             <div class="stats">
@@ -63,7 +71,7 @@ The above copyright notice and this permission notice shall be included in all c
               <i class="material-icons">quiz</i>
             </div>
             <p class="card-category">Még nem fizetett rendelések száma</p>
-            <h3 class="card-title">75</h3>
+            <h3 class="card-title">{{ notPaidOrders}}</h3>
           </div>
           <div class="card-footer">
             <div class="stats">
@@ -79,7 +87,7 @@ The above copyright notice and this permission notice shall be included in all c
               <i class="material-icons">functions</i>
             </div>
             <p class="card-category">Még nem fizetett számlák összege</p>
-            <h3 class="card-title">15000
+            <h3 class="card-title">{{ sumNotPaidBills }}
             <small>Ft</small></h3>
           </div>
           <div class="card-footer">

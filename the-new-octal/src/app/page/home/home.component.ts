@@ -1,24 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Customer } from 'src/app/model/customer';
+import { Product } from 'src/app/model/product';
+import { CustomerService } from 'src/app/service/customer.service';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  constructor(
+    private productService: ProductService,
+    private customerService: CustomerService,
+  ) {}
 
-  constructor() { }
+  activeProducts$: Observable<Product[]> = this.productService.getAll();
+  activeCustomers$: Observable<Customer[]> = this.customerService.getAll();
 
-  activeProducts: number = 27; //mock data
+  activeProducts: number = 0;
+  activeCustomers: number = 0;
+  notPaidOrders: number = 0;
+  sumNotPaidBills: number = 0;
 
-  activeCustomers: number = 155; //mock data
+  ap = this.activeProducts$.subscribe((productList) => {
+    productList.forEach((element) => {
+      if (element.active) {
+        this.activeProducts++;
+      }
+    });
+  });
 
-  notPaidOrders: number = 15; //mock data
+  ac = this.activeCustomers$.subscribe((customerList) => {
+    customerList.forEach((element) => {
+      if (element.active) {
+        this.activeCustomers++;
+      }
+    });
+  });
 
-  sumNotPaidBills: number = 15750; //mock data
-
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

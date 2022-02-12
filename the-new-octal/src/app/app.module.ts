@@ -10,6 +10,14 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
+import { ProductsComponent } from './page/products/products.component';
+import { DatarestructurePipe } from './pipe/datarestructure.pipe';
+import { ListingTableComponent } from './common/listing-table/listing-table.component';
+import { OrdersComponent } from './page/orders/orders.component';
+import { BillsComponent } from './page/bills/bills.component';
+import { AddressesComponent } from './page/addresses/addresses.component';
+import { CategoriesComponent } from './page/categories/categories.component';
+import { CustomersComponent } from './page/customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +27,15 @@ import { SorterPipe } from './pipe/sorter.pipe';
     SidebarComponent,
     FooterComponent,
     FilterPipe,
-    SorterPipe
+    SorterPipe,
+    ProductsComponent,
+    DatarestructurePipe,
+    ListingTableComponent,
+    OrdersComponent,
+    BillsComponent,
+    AddressesComponent,
+    CategoriesComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,

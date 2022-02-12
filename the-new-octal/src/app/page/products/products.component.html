@@ -27,14 +27,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of list">
+                  <tr *ngFor="let item of list$ | async">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.type}}</td>
                     <td>{{item.catID}}</td>
                     <td>{{item.description}}</td>
                     <td>{{item.price}}</td>
-                    <td>{{item.featurde}}</td>
+                    <td>{{item.featured}}</td>
                     <td>{{item.active}}</td>
                     <td>
                       <button type="button" class="btn btn-success btn-link">

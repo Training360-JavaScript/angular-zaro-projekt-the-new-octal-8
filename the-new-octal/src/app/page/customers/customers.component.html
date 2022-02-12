@@ -19,18 +19,24 @@
                     <th>FIRSTNAME</th>
                     <th>LASTNAME</th>
                     <th>EMAIL</th>
-                    <th>ADDRESS</th>
+                    <th>ZIP</th>
+                    <th>COUNTRY</th>
+                    <th>CITY</th>
+                    <th>STREET</th>
                     <th>ACTIVE</th>
                     <!-- <th></th> -->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of list">
+                  <tr *ngFor="let item of list$ | async">
                     <td>{{item.id}}</td>
                     <td>{{item.firstName}}</td>
                     <td>{{item.lastName}}</td>
                     <td>{{item.email}}</td>
-                    <td>{{item.address}}</td>
+                    <td>{{item.address.zip}}</td>
+                    <td>{{item.address.country}}</td>
+                    <td>{{item.address.city}}</td>
+                    <td>{{item.address.street}}</td>
                     <td>{{item.active}}</td>
                     <td>
                       <button type="button" class="btn btn-success btn-link">

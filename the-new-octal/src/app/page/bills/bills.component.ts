@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bills',
@@ -15,9 +16,16 @@ export class BillsComponent implements OnInit {
     {"id":5,"orderID":203,"amount":271,"status":"new"}
   ];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  editBill(item:any): void {
+    this.router.navigateByUrl(`/edit-bill/${item.id}`);
+    console.log(item);
   }
 
 }

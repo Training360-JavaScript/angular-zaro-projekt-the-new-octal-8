@@ -28,7 +28,7 @@
                     <td>{{item.amount}}</td>
                     <td>{{item.status}}</td>
                     <td>
-                      <button type="button" class="btn btn-success btn-link">
+                      <button (click)="editBill(item)" type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
                         Edit
                       </button>

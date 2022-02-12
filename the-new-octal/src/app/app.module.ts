@@ -18,6 +18,7 @@ import { BillsComponent } from './page/bills/bills.component';
 import { AddressesComponent } from './page/addresses/addresses.component';
 import { CategoriesComponent } from './page/categories/categories.component';
 import { CustomersComponent } from './page/customers/customers.component';
+import { EditBillComponent } from './page/edit-bill/edit-bill.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CustomersComponent } from './page/customers/customers.component';
     BillsComponent,
     AddressesComponent,
     CategoriesComponent,
-    CustomersComponent
+    CustomersComponent,
+    EditBillComponent
   ],
   imports: [
     BrowserModule,

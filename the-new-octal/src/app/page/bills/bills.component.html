@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header card-header-info">
+            <h4 class="card-title mt-0">Bills</h4>
+          </div>
+          <button class="btn btn-success btn-block">
+            <i class="material-icons">add</i>
+            Create new bill
+          </button>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="">
+                  <tr>
+                    <th>ID</th>
+                    <th>ORDERID</th>
+                    <th>AMOUNT</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of list">
+                    <td>{{item.id}}</td>
+                    <td>{{item.orderID}}</td>
+                    <td>{{item.amount}}</td>
+                    <td>{{item.status}}</td>
+                    <td>
+                      <button type="button" class="btn btn-success btn-link">
+                        <i class="material-icons">edit</i>
+                        Edit
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-link">
+                        <i class="material-icons">delete</i>
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

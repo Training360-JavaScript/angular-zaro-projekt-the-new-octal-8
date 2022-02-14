@@ -41,8 +41,8 @@ export class CategoriesComponent implements OnInit {
     }
   }
 
-  edit(item: { id: number }): void {
-    this.router.navigate(["edit-category", item.id]);
+  edit(id: number): void {
+    this.router.navigate(["edit-category", id]);
   }
 
   delete(item: { id: number }) {

@@ -42,8 +42,8 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  edit(item: { id: number }): void {
-    this.router.navigate(["edit-order", item.id]);
+  edit(id: number): void {
+    this.router.navigate(["edit-order", id]);
   }
 
   delete(item: { id: number }) {

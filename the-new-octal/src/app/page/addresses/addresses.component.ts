@@ -44,8 +44,8 @@ export class AddressesComponent implements OnInit {
     }
   }
 
-  edit(item: { id: number }): void {
-    this.router.navigate(["edit-address", item.id]);
+  edit(id: number): void {
+    this.router.navigate(["edit-address", id]);
   }
 
   delete(item: { id: number }) {

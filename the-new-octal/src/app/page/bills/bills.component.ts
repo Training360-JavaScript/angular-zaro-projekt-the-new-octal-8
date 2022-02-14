@@ -42,8 +42,8 @@ export class BillsComponent implements OnInit {
     }
   }
 
-  edit(item: { id: number }): void {
-    this.router.navigate(["edit-bill", item.id]);
+  edit(id: number): void {
+    this.router.navigate(["edit-bill", id]);
   }
 
   delete(item: { id: number }) {

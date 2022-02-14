@@ -41,7 +41,7 @@
                 <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
                     <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
-                      <button (click)="editBill(item)" type="button" class="btn btn-success btn-link">
+                      <button (click)="edit(item)" type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
                         Edit
                       </button>

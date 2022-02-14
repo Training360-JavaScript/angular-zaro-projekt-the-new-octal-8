@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Customer } from 'src/app/model/customer';
 import { CustomerService } from 'src/app/service/customer.service';
 import {TableColumn} from "../../model/table-column";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customers',
@@ -30,6 +31,7 @@ export class CustomersComponent implements OnInit {
 
 
   constructor(
+    private router: Router,
     private customerService: CustomerService
   ) { }
 
@@ -43,6 +45,10 @@ export class CustomersComponent implements OnInit {
       this.sort = reference;
       this.descendingOrder = false;
     }
+  }
+
+  edit(item: { id: number }): void {
+    this.router.navigate(["edit-customer", item.id]);
   }
 
   delete(item: { id: number }) {

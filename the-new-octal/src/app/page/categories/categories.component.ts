@@ -3,6 +3,7 @@ import {CategoryService} from "../../service/category.service";
 import {Observable} from "rxjs";
 import {Category} from "../../model/category";
 import {TableColumn} from "../../model/table-column";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-categories',
@@ -24,6 +25,7 @@ export class CategoriesComponent implements OnInit {
 
 
   constructor(
+    private router: Router,
     private categoriesService: CategoryService
   ) { }
 
@@ -37,6 +39,10 @@ export class CategoriesComponent implements OnInit {
       this.sort = reference;
       this.descendingOrder = false;
     }
+  }
+
+  edit(item: { id: number }): void {
+    this.router.navigate(["edit-category", item.id]);
   }
 
   delete(item: { id: number }) {

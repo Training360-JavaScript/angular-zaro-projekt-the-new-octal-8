@@ -25,6 +25,7 @@ import { FilterAllPipe } from './pipe/filter-all.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditCategoryComponent } from './page/edit-category/edit-category.component';
+import { EditProductComponent } from './page/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { EditCategoryComponent } from './page/edit-category/edit-category.compon
     FilterAllPipe,
     EditAddressComponent,
     EditOrderComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

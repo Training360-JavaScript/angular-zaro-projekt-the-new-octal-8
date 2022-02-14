@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -21,11 +21,13 @@
                     <th>CITY</th>
                     <th>STREET</th>
                     <th>NOTES</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
                     <!-- <th></th> -->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of list">
+                  <tr *ngFor="let item of list$ | async">
                     <td>{{item.id}}</td>
                     <td>{{item.zip}}</td>
                     <td>{{item.country}}</td>

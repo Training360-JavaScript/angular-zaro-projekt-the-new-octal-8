@@ -12,14 +12,6 @@ export class ProductsComponent implements OnInit {
 
   list$: Observable<Product[]> = this.productService.getAll();
 
-  /* keys: any = Object.keys(this.list[0])
-  .map
-  (
-    item => item.toUpperCase()
-  ); */
-
-
-
   constructor(
     private productService: ProductService
   ) { }

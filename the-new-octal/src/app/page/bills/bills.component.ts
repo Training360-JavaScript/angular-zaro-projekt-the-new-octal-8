@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {BillService} from "../../service/bill.service";
+import {Observable} from "rxjs";
+import {Bill} from "../../model/bill";
 
 @Component({
   selector: 'app-bills',
@@ -8,16 +11,11 @@ import { Router } from '@angular/router';
 })
 export class BillsComponent implements OnInit {
 
-  list: any[] = [
-    {"id":1,"orderID":598,"amount":904,"status":"new"},
-    {"id":2,"orderID":485,"amount":256,"status":"new"},
-    {"id":3,"orderID":346,"amount":76,"status":"new"},
-    {"id":4,"orderID":956,"amount":661,"status":"new"},
-    {"id":5,"orderID":203,"amount":271,"status":"new"}
-  ];
+  list$: Observable<Bill[]> = this.billService.getAll();
 
   constructor(
-    private router: Router
+    private router: Router,
+    private billService: BillService
   ) { }
 
   ngOnInit(): void {

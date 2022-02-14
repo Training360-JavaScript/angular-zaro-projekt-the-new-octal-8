@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {OrderService} from "../../service/order.service";
+import {Observable} from "rxjs";
+import {Order} from "../../model/order";
+import {TableColumn} from "../../model/table-column";
 
 @Component({
   selector: 'app-orders',
@@ -7,17 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  list: any[] = [
-    {"id":1,"customerID":476,"productID":973,"amount":9,"status":"new"},
-    {"id":2,"customerID":444,"productID":777,"amount":9,"status":"shipped"},
-    {"id":3,"customerID":639,"productID":765,"amount":2,"status":"new"},
-    {"id":4,"customerID":829,"productID":24,"amount":8,"status":"paid"},
-    {"id":5,"customerID":484,"productID":77,"amount":4,"status":"shipped"}
+  sort: string = 'id';
+  descendingOrder: boolean = false;
+  list$: Observable<Order[]> = this.orderService.getAll();
+  public phrase: string = '';
+
+  columns: TableColumn[] = [
+    {reference: 'id', message: 'ID'},
+    {reference: 'customerID', message: 'CUSTOMERID'},
+    {reference: 'productID', message: 'PRODUCTID'},
+    {reference: 'amount', message: 'AMOUNT'},
+    {reference: 'status', message: 'STATUS'},
   ];
 
-  constructor() { }
+  constructor(
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onChangeOrder(reference: string) {
+    if (reference == this.sort) {
+      this.descendingOrder =! this.descendingOrder;
+    } else {
+      this.sort = reference;
+      this.descendingOrder = false;
+    }
+  }
+
+  delete(item: { id: number }) {
+    this.orderService.delete(item.id).subscribe(() => {
+        this.list$ = this.orderService.getAll()
+      }
+    );
   }
 
 }

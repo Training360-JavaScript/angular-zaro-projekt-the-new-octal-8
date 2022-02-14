@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -15,18 +15,14 @@
               <table class="table table-hover">
                 <thead class="">
                   <tr>
-                    <th>ID</th>
-                    <th>ORDERID</th>
-                    <th>AMOUNT</th>
-                    <th>STATUS</th>
+                    <th *ngFor="let column of columns" class="clickable-column" [class.table-active]="sort === column.reference" (click)="onChangeOrder(column.reference)">{{ column.message }}</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of list">
-                    <td>{{item.id}}</td>
-                    <td>{{item.orderID}}</td>
-                    <td>{{item.amount}}</td>
-                    <td>{{item.status}}</td>
+                <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder">
+                  <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
                       <button (click)="editBill(item)" type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
@@ -34,7 +30,7 @@
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger btn-link">
+                      <button type="button" (click)="delete(item)" class="btn btn-danger btn-link">
                         <i class="material-icons">delete</i>
                         Delete
                       </button>

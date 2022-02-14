@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -10,28 +10,36 @@
             <i class="material-icons">add</i>
             Create new address
           </button>
+          <div class="form-group">
+            <input
+              [(ngModel)]="phrase"
+              type="text"
+              class="form-control"
+              placeholder="Search..."
+            />
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead class="">
                   <tr>
-                    <th>ID</th>
-                    <th>ZIP</th>
-                    <th>COUNTRY</th>
-                    <th>CITY</th>
-                    <th>STREET</th>
-                    <th>NOTES</th>
-                    <!-- <th></th> -->
+                    <th *ngFor="let column of columns"
+                        class="clickable-column"
+                        [class.table-active]="sort === column.reference"
+                        (click)="onChangeOrder(column.reference)"
+                    >
+                      <ng-container *ngIf="sort === column.reference">
+                        <span class="fa" [class.fa-arrow-down]="!descendingOrder" [class.fa-arrow-up]="descendingOrder"></span>
+                      </ng-container>
+                      {{ column.message }}
+                    </th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of list">
-                    <td>{{item.id}}</td>
-                    <td>{{item.zip}}</td>
-                    <td>{{item.country}}</td>
-                    <td>{{item.city}}</td>
-                    <td>{{item.street}}</td>
-                    <td>{{item.notes}}</td>
+                <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
+                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
                       <button type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
@@ -39,7 +47,7 @@
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger btn-link">
+                      <button type="button" (click)="delete(item)" class="btn btn-danger btn-link">
                         <i class="material-icons">delete</i>
                         Delete
                       </button>

@@ -10,6 +10,7 @@ import { OrdersComponent } from './page/orders/orders.component';
 import { ProductsComponent } from './page/products/products.component';
 import {EditAddressComponent} from "./page/edit-address/edit-address.component";
 import {EditOrderComponent} from "./page/edit-order/edit-order.component";
+import {EditCategoryComponent} from "./page/edit-category/edit-category.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'categories',
     component: CategoriesComponent,
+  },
+  {
+    path: "edit-category/:id",
+    component: EditCategoryComponent
   },
   {
     path: 'addresses',

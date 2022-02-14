@@ -24,6 +24,7 @@ import {FormsModule} from "@angular/forms";
 import { FilterAllPipe } from './pipe/filter-all.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
+import { EditCategoryComponent } from './page/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EditOrderComponent } from './page/edit-order/edit-order.component';
     LimitPipe,
     FilterAllPipe,
     EditAddressComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,

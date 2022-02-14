@@ -22,47 +22,11 @@ export class HomeComponent implements OnInit {
     private orderService: OrderService
   ) {}
 
-  products$: Observable<Product[]> = this.productService.getAll();
-  customers$: Observable<Customer[]> = this.customerService.getAll();
-  orders$: Observable<Order[]> = this.orderService.getAll();
-  bills$: Observable<Bill[]> = this.billService.getAll();
 
-  activeProducts: number = 0;
-  activeCustomers: number = 0;
-  notPaidOrders: number = 0;
-  sumNotPaidBills: number = 0;
-
-  ap = this.products$.subscribe((productList) => {
-    productList.forEach((element) => {
-      if (element.active) {
-        this.activeProducts++;
-      }
-    });
-  });
-
-  ac = this.customers$.subscribe((customerList) => {
-    customerList.forEach((element) => {
-      if (element.active) {
-        this.activeCustomers++;
-      }
-    });
-  });
-
-  npo = this.orders$.subscribe((orderList) => {
-    orderList.forEach((element) => {
-      if (element['status'] == 'new') {
-        this.notPaidOrders++;
-      }
-    });
-  });
-
-  snpb = this.bills$.subscribe((billList) => {
-    billList.forEach((element) => {
-      if (element['status'] == 'new') {
-        this.sumNotPaidBills += element['amount'];
-      }
-    });
-  });
+  activeProducts$:  Observable<number> = this.productService.getNumberOfValue('active', true);
+  activeCustomers$:  Observable<number> = this.customerService.getNumberOfValue('active', true);
+  notPaidOrders$:  Observable<number> = this.orderService.getNumberOfValue('status', 'new');
+  sumNotPaidBills:  number = this.billService.getSumByState('status', 'new');
 
   ngOnInit(): void {}
 }

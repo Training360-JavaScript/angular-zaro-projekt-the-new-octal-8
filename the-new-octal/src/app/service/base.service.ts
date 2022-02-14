@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BaseService<T extends {id: number}> {
+export class BaseService<T extends {id: number, [key: string]: any}> {
 
   apiUrl: string = environment.apiUrl;
 
@@ -38,5 +38,10 @@ export class BaseService<T extends {id: number}> {
   delete(id: number): Observable<T> {
     return this.http.delete<T>(`${this.apiUrl}${this.entityName}/${id}`);
   }
+
+  getNumberOfValue(prop: string, value: string | boolean): Observable<number> {
+    return  this.getAll().pipe(map(item => item.filter(i => i[prop] == value).length))
+   }
+
 
 }

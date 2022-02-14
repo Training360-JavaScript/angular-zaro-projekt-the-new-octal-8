@@ -22,11 +22,10 @@ export class HomeComponent implements OnInit {
     private orderService: OrderService
   ) {}
 
-
   activeProducts$:  Observable<number> = this.productService.getNumberOfValue('active', true);
   activeCustomers$:  Observable<number> = this.customerService.getNumberOfValue('active', true);
   notPaidOrders$:  Observable<number> = this.orderService.getNumberOfValue('status', 'new');
-  sumNotPaidBills:  number = this.billService.getSumByState('status', 'new');
+  sumNotPaidBills$: Observable<number> = this.billService.getSumOfProperty('status', 'new','amount');
 
   ngOnInit(): void {}
 }

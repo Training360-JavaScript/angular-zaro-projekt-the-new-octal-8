@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {BillService} from "../../service/bill.service";
 import {Observable} from "rxjs";
 import {Bill} from "../../model/bill";
+import {TableColumn} from "../../model/table-column";
 
 @Component({
   selector: 'app-bills',
@@ -11,7 +12,16 @@ import {Bill} from "../../model/bill";
 })
 export class BillsComponent implements OnInit {
 
+  sort: string = 'id';
+  descendingOrder: boolean = false;
   list$: Observable<Bill[]> = this.billService.getAll();
+
+  columns: TableColumn[] = [
+    {reference: 'id', message: 'ID'},
+    {reference: 'orderID', message: 'ORDERID'},
+    {reference: 'amount', message: 'AMOUNT'},
+    {reference: 'status', message: 'STATUS'},
+  ];
 
   constructor(
     private router: Router,
@@ -24,6 +34,15 @@ export class BillsComponent implements OnInit {
   editBill(item:any): void {
     this.router.navigateByUrl(`/edit-bill/${item.id}`);
     console.log(item);
+  }
+
+  onChangeOrder(reference: string) {
+    if (reference == this.sort) {
+      this.descendingOrder =! this.descendingOrder;
+    } else {
+      this.sort = reference;
+      this.descendingOrder = false;
+    }
   }
 
 }

@@ -19,6 +19,7 @@ import { AddressesComponent } from './page/addresses/addresses.component';
 import { CategoriesComponent } from './page/categories/categories.component';
 import { CustomersComponent } from './page/customers/customers.component';
 import { EditBillComponent } from './page/edit-bill/edit-bill.component';
+import { LimitPipe } from './pipe/limit.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EditBillComponent } from './page/edit-bill/edit-bill.component';
     AddressesComponent,
     CategoriesComponent,
     CustomersComponent,
-    EditBillComponent
+    EditBillComponent,
+    LimitPipe
   ],
   imports: [
     BrowserModule,

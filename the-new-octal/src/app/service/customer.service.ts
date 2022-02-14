@@ -17,7 +17,7 @@ export class CustomerService extends BaseService<Customer> {
     this.entityName = 'customer';
   }
 
-  createAddress(customer: Customer): Customer {
+  createRealCustomer(customer: Customer): Customer {
     if (typeof customer.address === 'string') {
       const addressParts = (customer.address as unknown as string).split(' ');
       const zip = addressParts.shift();
@@ -26,20 +26,20 @@ export class CustomerService extends BaseService<Customer> {
       customer.address.zip = parseInt(zip || '');
       customer.address.street = street;
     }
-    return customer;
+    return new Customer(customer.id, customer.firstName, customer.lastName, customer.email, customer.address, customer.active);
   }
 
   override getAll(): Observable<Customer[]> {
     return super.getAll().pipe(
       map(list => {
-        return list.map(c => this.createAddress(c));
+        return list.map(c => this.createRealCustomer(c));
       }),
     );
   }
 
   override get(id: number): Observable<Customer> {
     return super.get(id).pipe(
-      map(customer => this.createAddress(customer) )
+      map(customer => this.createRealCustomer(customer) )
     );
   }
 }

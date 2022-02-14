@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryService} from "../../service/category.service";
 import {Observable} from "rxjs";
 import {Category} from "../../model/category";
+import {TableColumn} from "../../model/table-column";
 
 @Component({
   selector: 'app-categories',
@@ -10,7 +11,15 @@ import {Category} from "../../model/category";
 })
 export class CategoriesComponent implements OnInit {
 
+  sort: string = 'id';
+  descendingOrder: boolean = false;
   list$: Observable<Category[]> = this.categoriesService.getAll();
+
+  columns: TableColumn[] = [
+    {reference: 'id', message: 'ID'},
+    {reference: 'name', message: 'NAME'},
+    {reference: 'description', message: 'DESCRIPTION'},
+  ];
 
 
   constructor(
@@ -18,6 +27,15 @@ export class CategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onChangeOrder(reference: string) {
+    if (reference == this.sort) {
+      this.descendingOrder =! this.descendingOrder;
+    } else {
+      this.sort = reference;
+      this.descendingOrder = false;
+    }
   }
 
 }

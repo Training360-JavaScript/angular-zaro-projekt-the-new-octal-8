@@ -1,28 +1,60 @@
 <div class="row" *ngIf="editedObject">
   <div class="col-6 offset-3">
-    <form #userForm="ngForm" (ngSubmit)="onSend(editedObject)">
-      <input type="hidden" name="id" [(ngModel)]="editedObject.id">
-      <div class="form-group">
-        <label for="i1ID">customerID</label>
-        <input id="i1ID" class="form-control" type="number" name="customerID" [(ngModel)]="editedObject.customerID" required>
+    <div class="card">
+      <div class="card-header card-header-info">
+        <h4 class="card-title">Edit or Add Order</h4>
       </div>
-      <div class="form-group">
-        <label for="i2ID">productID</label>
-        <input id="i2ID" class="form-control" type="number" name="productID" [(ngModel)]="editedObject.productID" required>
+      <div class="card-body">
+        <form #userForm="ngForm" (ngSubmit)="onSend(editedObject)">
+          <input type="hidden" name="id" [(ngModel)]="editedObject.id">
+          <div class="form-group">
+            <label for="i1ID">CustomerID</label>
+            <input id="i1ID" class="form-control" type="number" name="customerID" [(ngModel)]="editedObject.customerID"
+              required>
+            <div class="validation validation-danger" [hidden]="userForm.controls['customerID']?.valid">
+              CustomerID required
+            </div>
+            <div class="validation validation-success" [hidden]="userForm.controls['customerID']?.invalid">
+              CustomerID OK
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="i2ID">ProductID</label>
+            <input id="i2ID" class="form-control" type="number" name="productID" [(ngModel)]="editedObject.productID"
+              required>
+            <div class="validation validation-danger" [hidden]="userForm.controls['productID']?.valid">
+              ProductID required
+            </div>
+            <div class="validation validation-success" [hidden]="userForm.controls['productID']?.invalid">
+              ProductID OK
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="i3ID">Amount</label>
+            <input id="i3ID" class="form-control" type="number" name="amount" [(ngModel)]="editedObject.amount"
+              required>
+            <div class="validation validation-danger" [hidden]="userForm.controls['amount']?.valid">
+              Amount required
+            </div>
+            <div class="validation validation-success" [hidden]="userForm.controls['amount']?.invalid">
+              Amount OK
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="i4ID">Status</label>
+            <select id="i4ID" class="form-control" name="status" [(ngModel)]="editedObject.status" required>
+              <option *ngFor="let value of listOfStatusValues" [value]="value">
+                {{value}}
+              </option>
+            </select>
+          </div>
+          <button [disabled]="!userForm.valid" type="submit" class="btn btn-success btn-link mr-2"> <i
+              class="material-icons">save</i>
+            Save</button>
+          <button routerLink="/orders" class="btn btn-danger btn-link"> <i class="material-icons">not_interested</i>
+            Cancel</button>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="i3ID">Amount</label>
-        <input id="i3ID" class="form-control" type="number" name="amount" [(ngModel)]="editedObject.amount" required>
-      </div>
-      <div class="form-group">
-        <label for="i4ID">Status</label>
-        <select id="i4ID" class="form-control" name="status" [(ngModel)]="editedObject.status" required>
-          <option *ngFor="let value of listOfStatusValues" [value]="value">
-            {{value}}
-          </option>
-        </select>
-      </div>
-      <button [disabled]="!userForm.valid" type="submit" class="btn btn-success"> <i class="fa fa-save"></i>  Save</button>
-    </form>
+    </div>
   </div>
 </div>

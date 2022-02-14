@@ -12,6 +12,7 @@ import {EditAddressComponent} from "./page/edit-address/edit-address.component";
 import {EditOrderComponent} from "./page/edit-order/edit-order.component";
 import {EditCategoryComponent} from "./page/edit-category/edit-category.component";
 import {EditProductComponent} from "./page/edit-product/edit-product.component";
+import {EditCustomerComponent} from "./page/edit-customer/edit-customer.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'customers',
     component: CustomersComponent,
+  },
+  {
+    path: "edit-customer/:id",
+    component: EditCustomerComponent
   },
   {
     path: 'orders',

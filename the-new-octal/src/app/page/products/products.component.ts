@@ -43,4 +43,10 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  delete(item: { id: number }) {
+    this.productService.delete(item.id).subscribe(() => {
+        this.list$ = this.productService.getAll()
+      }
+    );
+  }
 }

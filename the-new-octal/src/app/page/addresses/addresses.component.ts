@@ -35,11 +35,17 @@ export class AddressesComponent implements OnInit {
 
   onChangeOrder(reference: string) {
     if (reference == this.sort) {
-      this.descendingOrder =! this.descendingOrder;
+      this.descendingOrder = !this.descendingOrder;
     } else {
       this.sort = reference;
       this.descendingOrder = false;
     }
   }
 
+  delete(item: { id: number }) {
+    this.addressService.delete(item.id).subscribe(() => {
+        this.list$ = this.addressService.getAll()
+      }
+    );
+  }
 }

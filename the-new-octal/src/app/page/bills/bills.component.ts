@@ -45,4 +45,10 @@ export class BillsComponent implements OnInit {
     }
   }
 
+  delete(item: { id: number }) {
+    this.billService.delete(item.id).subscribe(() => {
+        this.list$ = this.billService.getAll()
+      }
+    );
+  }
 }

@@ -40,4 +40,11 @@ export class OrdersComponent implements OnInit {
     }
   }
 
+  delete(item: { id: number }) {
+    this.orderService.delete(item.id).subscribe(() => {
+        this.list$ = this.orderService.getAll()
+      }
+    );
+  }
+
 }

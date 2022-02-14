@@ -45,4 +45,10 @@ export class CustomersComponent implements OnInit {
     }
   }
 
+  delete(item: { id: number }) {
+    this.customerService.delete(item.id).subscribe(() => {
+        this.list$ = this.customerService.getAll()
+      }
+    );
+  }
 }

@@ -22,6 +22,8 @@ import { EditBillComponent } from './page/edit-bill/edit-bill.component';
 import { LimitPipe } from './pipe/limit.pipe';
 import {FormsModule} from "@angular/forms";
 import { FilterAllPipe } from './pipe/filter-all.pipe';
+import { EditAddressComponent } from './page/edit-address/edit-address.component';
+import { EditOrderComponent } from './page/edit-order/edit-order.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { FilterAllPipe } from './pipe/filter-all.pipe';
     CustomersComponent,
     EditBillComponent,
     LimitPipe,
-    FilterAllPipe
+    FilterAllPipe,
+    EditAddressComponent,
+    EditOrderComponent
   ],
   imports: [
     BrowserModule,

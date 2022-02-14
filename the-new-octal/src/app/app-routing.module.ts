@@ -8,6 +8,8 @@ import { EditBillComponent } from './page/edit-bill/edit-bill.component';
 import { HomeComponent } from './page/home/home.component';
 import { OrdersComponent } from './page/orders/orders.component';
 import { ProductsComponent } from './page/products/products.component';
+import {EditAddressComponent} from "./page/edit-address/edit-address.component";
+import {EditOrderComponent} from "./page/edit-order/edit-order.component";
 
 const routes: Routes = [
   {
@@ -27,6 +29,10 @@ const routes: Routes = [
     component: OrdersComponent,
   },
   {
+    path: "edit-order/:id",
+    component: EditOrderComponent
+  },
+  {
     path: 'bills',
     component: BillsComponent,
   },
@@ -41,6 +47,10 @@ const routes: Routes = [
   {
     path: 'addresses',
     component: AddressesComponent,
+  },
+  {
+    path: "edit-address/:id",
+    component: EditAddressComponent
   },
   {
     path: '**',

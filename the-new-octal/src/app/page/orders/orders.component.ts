@@ -3,6 +3,7 @@ import {OrderService} from "../../service/order.service";
 import {Observable} from "rxjs";
 import {Order} from "../../model/order";
 import {TableColumn} from "../../model/table-column";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-orders',
@@ -25,6 +26,7 @@ export class OrdersComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private orderService: OrderService
   ) { }
 
@@ -38,6 +40,10 @@ export class OrdersComponent implements OnInit {
       this.sort = reference;
       this.descendingOrder = false;
     }
+  }
+
+  edit(id: number): void {
+    this.router.navigate(["edit-order", id]);
   }
 
   delete(item: { id: number }) {

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 import {TableColumn} from "../../model/table-column";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -28,6 +29,7 @@ export class ProductsComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private productService: ProductService
   ) { }
 
@@ -41,6 +43,10 @@ export class ProductsComponent implements OnInit {
       this.sort = reference;
       this.descendingOrder = false;
     }
+  }
+
+  edit(id: number): void {
+    this.router.navigate(["edit-product", id]);
   }
 
   delete(item: { id: number }) {

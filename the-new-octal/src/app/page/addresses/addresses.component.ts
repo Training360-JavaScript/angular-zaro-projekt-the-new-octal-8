@@ -3,6 +3,7 @@ import {AddressService} from "../../service/address.service";
 import {Observable} from "rxjs";
 import {Address} from "../../model/address";
 import {TableColumn} from "../../model/table-column";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-addresses',
@@ -26,6 +27,7 @@ export class AddressesComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private addressService: AddressService
   ) {
   }
@@ -40,6 +42,10 @@ export class AddressesComponent implements OnInit {
       this.sort = reference;
       this.descendingOrder = false;
     }
+  }
+
+  edit(id: number): void {
+    this.router.navigate(["edit-address", id]);
   }
 
   delete(item: { id: number }) {

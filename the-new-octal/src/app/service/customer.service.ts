@@ -18,7 +18,7 @@ export class CustomerService extends BaseService<Customer> {
   }
 
   createRealCustomer(customer: Customer): Customer {
-    if (typeof customer.address === 'string') {
+    if (typeof customer?.address === 'string') {
       const addressParts = (customer.address as unknown as string).split(' ');
       const zip = addressParts.shift();
       const street = addressParts.join(' ');
@@ -26,7 +26,7 @@ export class CustomerService extends BaseService<Customer> {
       customer.address.zip = parseInt(zip || '');
       customer.address.street = street;
     }
-    return new Customer(customer.id, customer.firstName, customer.lastName, customer.email, new Address(customer.address), customer.active);
+    return new Customer(customer);
   }
 
   override getAll(): Observable<Customer[]> {

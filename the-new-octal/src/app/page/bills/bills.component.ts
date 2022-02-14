@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {BillService} from "../../service/bill.service";
 import {Observable} from "rxjs";
 import {Bill} from "../../model/bill";
@@ -15,6 +15,7 @@ export class BillsComponent implements OnInit {
   sort: string = 'id';
   descendingOrder: boolean = false;
   list$: Observable<Bill[]> = this.billService.getAll();
+  public phrase: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},
@@ -26,23 +27,23 @@ export class BillsComponent implements OnInit {
   constructor(
     private router: Router,
     private billService: BillService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
-  editBill(item:any): void {
-    this.router.navigateByUrl(`/edit-bill/${item.id}`);
-    console.log(item);
-  }
-
   onChangeOrder(reference: string) {
     if (reference == this.sort) {
-      this.descendingOrder =! this.descendingOrder;
+      this.descendingOrder = !this.descendingOrder;
     } else {
       this.sort = reference;
       this.descendingOrder = false;
     }
+  }
+
+  edit(id: number): void {
+    this.router.navigate(["edit-bill", id]);
   }
 
   delete(item: { id: number }) {

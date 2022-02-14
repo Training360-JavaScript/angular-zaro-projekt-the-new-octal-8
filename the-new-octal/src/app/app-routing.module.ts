@@ -8,6 +8,11 @@ import { EditBillComponent } from './page/edit-bill/edit-bill.component';
 import { HomeComponent } from './page/home/home.component';
 import { OrdersComponent } from './page/orders/orders.component';
 import { ProductsComponent } from './page/products/products.component';
+import {EditAddressComponent} from "./page/edit-address/edit-address.component";
+import {EditOrderComponent} from "./page/edit-order/edit-order.component";
+import {EditCategoryComponent} from "./page/edit-category/edit-category.component";
+import {EditProductComponent} from "./page/edit-product/edit-product.component";
+import {EditCustomerComponent} from "./page/edit-customer/edit-customer.component";
 
 const routes: Routes = [
   {
@@ -19,12 +24,24 @@ const routes: Routes = [
     component: ProductsComponent,
   },
   {
+    path: "edit-product/:id",
+    component: EditProductComponent
+  },
+  {
     path: 'customers',
     component: CustomersComponent,
   },
   {
+    path: "edit-customer/:id",
+    component: EditCustomerComponent
+  },
+  {
     path: 'orders',
     component: OrdersComponent,
+  },
+  {
+    path: "edit-order/:id",
+    component: EditOrderComponent
   },
   {
     path: 'bills',
@@ -39,8 +56,16 @@ const routes: Routes = [
     component: CategoriesComponent,
   },
   {
+    path: "edit-category/:id",
+    component: EditCategoryComponent
+  },
+  {
     path: 'addresses',
     component: AddressesComponent,
+  },
+  {
+    path: "edit-address/:id",
+    component: EditAddressComponent
   },
   {
     path: '**',

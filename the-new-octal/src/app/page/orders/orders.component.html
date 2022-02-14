@@ -6,7 +6,7 @@
           <div class="card-header card-header-info">
             <h4 class="card-title mt-0">Orders</h4>
           </div>
-          <button class="btn btn-success btn-block">
+          <button (click)="edit(0)"  class="btn btn-success btn-block">
             <i class="material-icons">add</i>
             Create new order
           </button>
@@ -39,9 +39,9 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
-                  <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
+                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
-                      <button type="button" class="btn btn-success btn-link">
+                      <button (click)="edit(item.id)" type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
                         Edit
                       </button>

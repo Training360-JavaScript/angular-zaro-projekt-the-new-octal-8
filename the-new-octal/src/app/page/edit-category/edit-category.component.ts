@@ -1,25 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
-import {BillService} from "../../service/bill.service";
-import {Bill} from "../../model/bill";
+import {Category} from "../../model/category";
+import {CategoryService} from "../../service/category.service";
 
 @Component({
-  selector: 'app-edit-bill',
-  templateUrl: './edit-bill.component.html',
-  styleUrls: ['./edit-bill.component.scss']
+  selector: 'app-edit-category',
+  templateUrl: './edit-category.component.html',
+  styleUrls: ['./edit-category.component.scss']
 })
-export class EditBillComponent implements OnInit {
+export class EditCategoryComponent implements OnInit {
 
-  editedObject: Bill | undefined = undefined;
+  editedObject: Category | undefined = undefined;
   edit: boolean = true;
-  listOfStatusValues: string[] = ["new", "paid"];
-  mainComponentRoute = "bills";
+  mainComponentRoute = "categories";
 
   constructor(
     private router: Router,
     private ar: ActivatedRoute,
-    private objectService: BillService
+    private objectService: CategoryService
   ) {
     this.ar.params.pipe(
       switchMap(params => this.objectService.get(params['id']))
@@ -27,7 +26,7 @@ export class EditBillComponent implements OnInit {
       currentObject => {
         if (currentObject === null || currentObject === undefined || currentObject.id < 1) {
           this.edit = false;
-          this.editedObject = new Bill();
+          this.editedObject = new Category();
         } else {
           this.editedObject = currentObject
         }
@@ -38,7 +37,7 @@ export class EditBillComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSend(editedObject: Bill) {
+  onSend(editedObject: Category) {
     const crudObservable: Observable<any> = this.edit ? this.objectService.update(editedObject) : this.objectService.create(editedObject);
     crudObservable.subscribe(
       result => {
@@ -47,4 +46,5 @@ export class EditBillComponent implements OnInit {
       }
     )
   }
+
 }

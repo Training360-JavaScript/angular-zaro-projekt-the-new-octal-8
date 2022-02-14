@@ -10,20 +10,17 @@ export class Customer {
   address: Address = new Address();
   active: boolean = false;
 
-  constructor(
-    id: number,
-    firstName: string,
-    lastName: string,
-    email: string,
-    address: Address,
-    active: boolean
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.address = address;
-    this.active = active;
+  constructor(fakeCustomer?: Customer) {
+    if (fakeCustomer) {
+      this.id = fakeCustomer.id;
+      this.firstName = fakeCustomer.firstName;
+      this.lastName = fakeCustomer.lastName;
+      this.email = fakeCustomer.email;
+      this.address = new Address(fakeCustomer.address);
+      this.active = fakeCustomer.active;
+    } else {
+      this.address = new Address();
+    }
   }
 
   get address_zip(): number {

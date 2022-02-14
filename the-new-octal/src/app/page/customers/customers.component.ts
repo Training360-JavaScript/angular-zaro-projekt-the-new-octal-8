@@ -11,10 +11,10 @@ import {TableColumn} from "../../model/table-column";
 })
 export class CustomersComponent implements OnInit {
 
-  limit: number = 10;
   sort: string = 'id';
   descendingOrder: boolean = false;
   list$: Observable<Customer[]> = this.customerService.getAll();
+  public phrase: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},
@@ -25,7 +25,6 @@ export class CustomersComponent implements OnInit {
     {reference: 'address_country', message: 'COUNTRY'},
     {reference: 'address_city', message: 'CITY'},
     {reference: 'address_street', message: 'STREET'},
-    // {reference: 'address', message: 'ADDRESS'},
     {reference: 'active', message: 'ACTIVE'},
   ];
 

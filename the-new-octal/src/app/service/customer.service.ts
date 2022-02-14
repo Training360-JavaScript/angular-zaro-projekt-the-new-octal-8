@@ -26,7 +26,7 @@ export class CustomerService extends BaseService<Customer> {
       customer.address.zip = parseInt(zip || '');
       customer.address.street = street;
     }
-    return new Customer(customer.id, customer.firstName, customer.lastName, customer.email, customer.address, customer.active);
+    return new Customer(customer.id, customer.firstName, customer.lastName, customer.email, new Address(customer.address), customer.active);
   }
 
   override getAll(): Observable<Customer[]> {

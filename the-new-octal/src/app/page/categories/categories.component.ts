@@ -14,6 +14,7 @@ export class CategoriesComponent implements OnInit {
   sort: string = 'id';
   descendingOrder: boolean = false;
   list$: Observable<Category[]> = this.categoriesService.getAll();
+  public phrase: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},

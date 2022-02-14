@@ -14,6 +14,7 @@ export class AddressesComponent implements OnInit {
   sort: string = 'id';
   descendingOrder: boolean = false;
   list$: Observable<Address[]> = this.addressService.getAll();
+  public phrase: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},

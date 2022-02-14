@@ -20,6 +20,8 @@ import { CategoriesComponent } from './page/categories/categories.component';
 import { CustomersComponent } from './page/customers/customers.component';
 import { EditBillComponent } from './page/edit-bill/edit-bill.component';
 import { LimitPipe } from './pipe/limit.pipe';
+import {FormsModule} from "@angular/forms";
+import { FilterAllPipe } from './pipe/filter-all.pipe';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,14 @@ import { LimitPipe } from './pipe/limit.pipe';
     CategoriesComponent,
     CustomersComponent,
     EditBillComponent,
-    LimitPipe
+    LimitPipe,
+    FilterAllPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

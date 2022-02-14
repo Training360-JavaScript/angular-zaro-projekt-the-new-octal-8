@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
   sort: string = 'id';
   descendingOrder: boolean = false;
   list$: Observable<Order[]> = this.orderService.getAll();
+  public phrase: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},

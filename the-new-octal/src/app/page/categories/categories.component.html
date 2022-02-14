@@ -10,6 +10,14 @@
             <i class="material-icons">add</i>
             Create new category
           </button>
+          <div class="form-group">
+            <input
+              [(ngModel)]="phrase"
+              type="text"
+              class="form-control"
+              placeholder="Search..."
+            />
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-hover">
@@ -21,7 +29,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder">
+                <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
                   <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
                       <button type="button" class="btn btn-success btn-link">

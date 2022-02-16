@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, filter, reduce, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BaseService<T extends {id: number}> {
+export class BaseService<T extends {id: number, [key: string]: any}> {
 
   apiUrl: string = environment.apiUrl;
 
@@ -39,4 +39,24 @@ export class BaseService<T extends {id: number}> {
     return this.http.delete<T>(`${this.apiUrl}${this.entityName}/${id}`);
   }
 
+  getNumberOfValue(property: string, value: string | boolean): Observable<number> {
+    return  this.getAll().pipe(map(item => item.filter(i => i[property] == value).length))
+   }
+
+   getSumOfProperty(property: string, value:string|boolean, toSum:string): Observable<number>{
+    return this.getAll()
+    .pipe
+    (map
+      (
+        item => item
+        .filter(i => i[property] == value)
+        .map(item => item[toSum])
+        .reduce((curr,next) => curr+next)
+      )
+    );
+    }
+
+    // filter(i => i[property] == value),
+    // map(i => i[toSum]),
+    // reduce((acc,act) => acc+act)
 }

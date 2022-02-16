@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of, Observable } from 'rxjs';
 import { Bill } from '../model/bill';
 import { BaseService } from './base.service';
 
@@ -14,5 +15,4 @@ export class BillService extends BaseService<Bill>{
     super(http);
     this.entityName = 'bill';
    }
-
 }

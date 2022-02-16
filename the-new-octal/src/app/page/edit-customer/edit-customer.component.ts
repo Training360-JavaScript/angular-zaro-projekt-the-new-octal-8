@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
 import {Customer} from "../../model/customer";
 import {CustomerService} from "../../service/customer.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-customer',
@@ -20,7 +21,8 @@ export class EditCustomerComponent implements OnInit {
   constructor(
     private router: Router,
     private ar: ActivatedRoute,
-    private objectService: CustomerService
+    private objectService: CustomerService,
+    private toastr: ToastrService
   ) {
     this.ar.params.pipe(
       switchMap(params => this.objectService.get(params['id']))
@@ -43,7 +45,10 @@ export class EditCustomerComponent implements OnInit {
     const crudObservable: Observable<any> = this.edit ? this.objectService.update(editedObject) : this.objectService.create(editedObject);
     crudObservable.subscribe(
       result => {
-        console.log(editedObject, result);
+        this.toastr.success('Saving successfull', '', {
+          timeOut: 1800,
+          positionClass: 'toast-top-right'
+        });
         this.router.navigate([this.mainComponentRoute])
       }
     )

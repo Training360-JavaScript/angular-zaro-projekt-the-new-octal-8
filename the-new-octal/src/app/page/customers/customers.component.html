@@ -6,30 +6,23 @@
           <div class="card-header card-header-info">
             <h4 class="card-title mt-0">Customers</h4>
           </div>
-          <button (click)="edit(0)"  class="btn btn-success btn-block">
+          <button (click)="edit(0)" class="btn btn-success btn-block">
             <i class="material-icons">add</i>
             Create new customer
           </button>
           <div class="form-group">
-            <input
-              [(ngModel)]="phrase"
-              type="text"
-              class="form-control"
-              placeholder="Search..."
-            />
+            <input [(ngModel)]="phrase" type="text" class="form-control" placeholder="Search..." />
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead class="">
                   <tr>
-                    <th *ngFor="let column of columns"
-                        class="clickable-column"
-                        [class.table-active]="sort === column.reference"
-                        (click)="onChangeOrder(column.reference)"
-                    >
+                    <th *ngFor="let column of columns" class="clickable-column"
+                      [class.table-active]="sort === column.reference" (click)="onChangeOrder(column.reference)">
                       <ng-container *ngIf="sort === column.reference">
-                        <span class="fa" [class.fa-arrow-down]="!descendingOrder" [class.fa-arrow-up]="descendingOrder"></span>
+                        <span class="fa" [class.fa-arrow-down]="!descendingOrder"
+                          [class.fa-arrow-up]="descendingOrder"></span>
                       </ng-container>
                       {{ column.message }}
                     </th>
@@ -38,8 +31,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
-                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
+                  <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
+                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">
+                      {{ item[column.reference] }}</td>
                     <td>
                       <button (click)="edit(item.id)" type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
@@ -62,3 +56,6 @@
     </div>
   </div>
 </div>
+
+
+<app-loading-animation-colors [list$]="list$"></app-loading-animation-colors>

@@ -53,6 +53,16 @@
                       </button>
                     </td>
                   </tr>
+                  <tr>
+                    <td class="table-active font-weight-bold text-danger h3">Összesen: </td>
+                    <td class="table-active font-weight-bold h4">{{sumName$ | async}}</td>
+                    <td class="table-active font-weight-bold h4">{{sumType$ | async}}</td>
+                    <td class="table-active font-weight-bold h4"></td>
+                    <td class="table-active font-weight-bold h4">{{sumDescription$ | async}}</td>
+                    <td class="table-active font-weight-bold h4">{{sumPrice$ | async}}</td>
+                    <td class="table-active font-weight-bold h4">{{sumFeatured$ | async}}</td>
+                    <td class="table-active font-weight-bold h4">{{sumActive$ | async}}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>

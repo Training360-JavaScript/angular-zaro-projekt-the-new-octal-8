@@ -4,5 +4,16 @@ th.clickable-column {
   cursor: pointer;
 }
 
+.validation {
+  font-style: italic;
+  font-size: 90%;
+
+  &-danger {
+    color: red;
+  }
+  &-success {
+    color: green;
+  }
+}
 
 

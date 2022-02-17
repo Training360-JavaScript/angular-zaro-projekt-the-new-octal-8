@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
 import {Address} from "../../model/address";
 import {AddressService} from "../../service/address.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-address',
@@ -18,7 +19,8 @@ export class EditAddressComponent implements OnInit {
   constructor(
     private router: Router,
     private ar: ActivatedRoute,
-    private objectService: AddressService
+    private objectService: AddressService,
+    private toastr: ToastrService
   ) {
     this.ar.params.pipe(
       switchMap(params => this.objectService.get(params['id']))
@@ -41,7 +43,10 @@ export class EditAddressComponent implements OnInit {
     const crudObservable: Observable<any> = this.edit ? this.objectService.update(editedObject) : this.objectService.create(editedObject);
     crudObservable.subscribe(
       result => {
-        console.log(editedObject, result);
+        this.toastr.success('Saving successfull', '', {
+          timeOut: 1800,
+          positionClass: 'toast-top-right'
+        });
         this.router.navigate([this.mainComponentRoute])
       }
     )

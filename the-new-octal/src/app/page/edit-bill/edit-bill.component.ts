@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Observable, switchMap} from "rxjs";
 import {BillService} from "../../service/bill.service";
 import {Bill} from "../../model/bill";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-bill',
@@ -19,7 +20,8 @@ export class EditBillComponent implements OnInit {
   constructor(
     private router: Router,
     private ar: ActivatedRoute,
-    private objectService: BillService
+    private objectService: BillService,
+    private toastr: ToastrService
   ) {
     this.ar.params.pipe(
       switchMap(params => this.objectService.get(params['id']))
@@ -42,7 +44,10 @@ export class EditBillComponent implements OnInit {
     const crudObservable: Observable<any> = this.edit ? this.objectService.update(editedObject) : this.objectService.create(editedObject);
     crudObservable.subscribe(
       result => {
-        console.log(editedObject, result);
+        this.toastr.success('Saving successfull', '', {
+          timeOut: 1800,
+          positionClass: 'toast-top-right'
+        });
         this.router.navigate([this.mainComponentRoute])
       }
     )

@@ -33,6 +33,13 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService
   ) { }
 
+  sumName$:  Observable<number> = this.productService.sum('name');
+  sumType$:  Observable<number> = this.productService.sum('type');
+  sumDescription$:  Observable<number> = this.productService.sum('description');
+  sumPrice$:  Observable<number> = this.productService.sum('price');
+  sumFeatured$:  Observable<number> = this.productService.sum('featured');
+  sumActive$:  Observable<number> = this.productService.sum('active');
+
   ngOnInit(): void {
   }
 

@@ -56,6 +56,29 @@ export class BaseService<T extends {id: number, [key: string]: any}> {
     );
     }
 
+    sum(property: string, value?: string | boolean): Observable<number> {
+      if (value) {
+        return this.getAll().pipe(map(item => item.filter((i) => {
+          if (typeof (i[property]) === 'boolean') { return (i[property] == value); }
+          if ((typeof (i[property]) === 'string') && (value !== '')) { return i[property].toLowerCase().includes((value as string).toLowerCase()); }
+          else { return true }
+        }
+        ).length))
+      }
+      else //number
+      {
+        return this.getAll().pipe(map(list => list.reduce((acc, next) => {
+          if (typeof (next[property]) === 'number') return next[property] + acc;
+          if ((typeof (next[property]) === 'string') && (value !== ''))  return ++acc;
+          if (typeof (next[property])) return next[property] + acc; //boolean és true
+
+        }
+          , 0)))
+      }
+
+    }
+
+
     // filter(i => i[property] == value),
     // map(i => i[toSum]),
     // reduce((acc,act) => acc+act)

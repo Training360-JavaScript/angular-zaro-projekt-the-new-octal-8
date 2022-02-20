@@ -20,10 +20,39 @@ export class HomeComponent implements OnInit {
     private orderService: OrderService
   ) {}
 
+  orderChartData:string = '';
+  billChartData:string = '';
+
   activeProducts$:  Observable<number> = this.productService.getNumberOfValue('active', true);
   activeCustomers$:  Observable<number> = this.customerService.getNumberOfValue('active', true);
+  activeCustomersPercentage$: Observable<number> = this.customerService.getPercentageOfValue('active', true);
+  activeProductsPercentage$: Observable<number> = this.productService.getPercentageOfValue('active', true);
+  notPaidOrdersPercentage$: Observable<number> = this.orderService.getPercentageOfValue('status', 'new');
+  notPaidBillsPercentage$: Observable<number> = this.billService.getPercentageOfValue('status', 'new');
+
   notPaidOrders$:  Observable<number> = this.orderService.getNumberOfValue('status', 'new');
   sumNotPaidBills$: Observable<number> = this.billService.getSumOfProperty('status', 'new','amount');
 
-  ngOnInit(): void {}
+  orderPieObserver = {
+    next:(x:number) => {
+      this.orderChartData = (x * 3.1415 * 24).toString() + ' ' +((1 - x) * 3.1415 * 24).toString();
+    },
+    error: (err: Error) => console.error('Observer got an error: ' + err),
+    complete: () => console.log('Observer got a complete notification'),
+  }
+
+  billPieObserver = {
+    next:(x:number) => {
+      this.billChartData = (x * 3.1415 * 24).toString() + ' ' +((1 - x) * 3.1415 * 24).toString();
+    },
+    error: (err: Error) => console.error('Observer got an error: ' + err),
+    complete: () => console.log('Observer got a complete notification'),
+  }
+
+  ngOnInit(): void {
+    this.notPaidOrdersPercentage$.subscribe(this.orderPieObserver);
+    this.notPaidBillsPercentage$.subscribe(this.billPieObserver);
+  }
+
+
 }

@@ -16,6 +16,8 @@ export class CategoriesComponent implements OnInit {
   descendingOrder: boolean = false;
   list$: Observable<Category[]> = this.categoriesService.getAll();
   public phrase: string = '';
+  searchKey: string = '';
+  searchValue: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},

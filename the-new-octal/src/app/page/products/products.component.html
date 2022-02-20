@@ -37,7 +37,7 @@
                     <th>DELETE</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="(list$ | async) as list">
                 <tr *ngFor="let item of list | sorter: sort:descendingOrder | filterAll: phrase">
                     <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
@@ -54,13 +54,12 @@
                     </td>
                   </tr>
                   <tr>
-                    <td class="table-active font-weight-bold h3">Összesen: </td>
                     <ng-container *ngFor="let column of columns">
-                      <td class="table-active font-weight-bold text-center h4" *ngIf="column.reference !== 'catID' && column.reference !== 'id'">{{list | sum:column.reference}}</td>
-                      <td class="table-active" *ngIf="column.reference === 'catID'"></td>
+                      <td class="font-weight-bold text-center h4" *ngIf="!column.reference.toLowerCase().includes('id'); else elseBlock">{{list | sum:column.reference}}</td>
+                      <ng-template #elseBlock><td></td></ng-template>
                     </ng-container>
-                    <td class="table-active"></td>
-                    <td class="table-active"></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>

@@ -16,7 +16,6 @@ export class ProductsComponent implements OnInit {
   descendingOrder: boolean = false;
   list$: Observable<Product[]> = this.productService.getAll();
   public phrase: string = '';
-  list: Product[]=[];
 
   columns: TableColumn[] = [
     { reference: 'id', message: 'ID' },
@@ -35,7 +34,6 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.list$.subscribe(prods => this.list = prods);
   }
 
   onChangeOrder(reference: string) {
@@ -53,8 +51,8 @@ export class ProductsComponent implements OnInit {
 
   delete(item: { id: number }) {
     this.productService.delete(item.id).subscribe(() => {
-      this.list$ = this.productService.getAll()
-    }
+        this.list$ = this.productService.getAll()
+      }
     );
   }
 }

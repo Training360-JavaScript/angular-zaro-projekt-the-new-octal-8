@@ -71,6 +71,7 @@ export class BaseService<T extends {id: number, [key: string]: any}> {
     );
     }
 
+
     // filter(i => i[property] == value),
     // map(i => i[toSum]),
     // reduce((acc,act) => acc+act)

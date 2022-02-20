@@ -15,7 +15,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead class="">
                   <tr>
                     <th *ngFor="let column of columns" class="clickable-column"
@@ -31,9 +31,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
-                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">
-                      {{ item[column.reference] }}</td>
+                <tr *ngFor="let item of list | sorter: sort:descendingOrder | filterAll: phrase">
+                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
                       <button (click)="edit(item.id)" type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
@@ -46,6 +45,15 @@
                         Delete
                       </button>
                     </td>
+                  </tr>
+                  <tr>
+                    <td class="table-active font-weight-bold h3">Összesen: </td>
+                    <ng-container *ngFor="let column of columns">
+                      <td class="table-active font-weight-bold text-center h4" *ngIf="column.reference !== 'catID' && column.reference !== 'id'">{{list | sum:column.reference}}</td>
+                      <td class="table-active" *ngIf="column.reference === 'catID'"></td>
+                    </ng-container>
+                    <td class="table-active"></td>
+                    <td class="table-active"></td>
                   </tr>
                 </tbody>
               </table>

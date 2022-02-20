@@ -16,6 +16,8 @@ export class ProductsComponent implements OnInit {
   descendingOrder: boolean = false;
   list$: Observable<Product[]> = this.productService.getAll();
   public phrase: string = '';
+  searchKey: string = '';
+  searchValue: string = '';
 
   columns: TableColumn[] = [
     { reference: 'id', message: 'ID' },

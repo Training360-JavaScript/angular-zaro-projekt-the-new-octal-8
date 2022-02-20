@@ -18,6 +18,20 @@
               placeholder="Search..."
             />
           </div>
+          <div class="input-group mb-3">
+            <select
+              [(ngModel)]="searchKey"
+              class="custom-select"
+            >
+              <option *ngFor="let column of columns" [value]="column.reference">{{column.message}}</option>
+            </select>
+            <input
+              [(ngModel)]="searchValue"
+              type="text"
+              class="form-control"
+              placeholder="Search in field..."
+            />
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-hover table-striped">
@@ -38,7 +52,7 @@
                   </tr>
                 </thead>
                 <tbody *ngIf="(list$ | async) as list">
-                <tr *ngFor="let item of list | sorter: sort:descendingOrder | filterAll: phrase">
+                <tr *ngFor="let item of list | sorter: sort:descendingOrder | filter:searchValue:searchKey | filterAll: phrase">
                     <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
                       <button (click)="edit(item.id)" type="button" class="btn btn-success btn-link">

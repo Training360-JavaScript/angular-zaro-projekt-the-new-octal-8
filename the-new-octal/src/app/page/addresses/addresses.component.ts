@@ -16,6 +16,8 @@ export class AddressesComponent implements OnInit {
   descendingOrder: boolean = false;
   list$: Observable<Address[]> = this.addressService.getAll();
   public phrase: string = '';
+  searchKey: string = '';
+  searchValue: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},

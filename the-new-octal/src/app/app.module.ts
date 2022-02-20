@@ -31,6 +31,7 @@ import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditCategoryComponent } from './page/edit-category/edit-category.component';
 import { EditProductComponent } from './page/edit-product/edit-product.component';
 import { EditCustomerComponent } from './page/edit-customer/edit-customer.component';
+import { SumPipe } from './pipe/sum.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EditCustomerComponent } from './page/edit-customer/edit-customer.compon
     EditOrderComponent,
     EditCategoryComponent,
     EditProductComponent,
-    EditCustomerComponent
+    EditCustomerComponent,
+    SumPipe
   ],
   imports: [
     BrowserModule,

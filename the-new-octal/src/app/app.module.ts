@@ -33,6 +33,7 @@ import { EditProductComponent } from './page/edit-product/edit-product.component
 import { EditCustomerComponent } from './page/edit-customer/edit-customer.component';
 import { LoadingAnimationColorsComponent } from './common/loading-animation-colors/loading-animation-colors.component';
 import { LoadingEditComponent } from './common/loading-edit/loading-edit.component';
+import { SumPipe } from './pipe/sum.pipe';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,8 @@ import { LoadingEditComponent } from './common/loading-edit/loading-edit.compone
     EditCustomerComponent,
     LoadingAnimationColorsComponent,
     LoadingEditComponent
+    SumPipe
+
   ],
   imports: [
     BrowserModule,

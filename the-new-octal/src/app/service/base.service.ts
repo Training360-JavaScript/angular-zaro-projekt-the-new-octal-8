@@ -11,6 +11,7 @@ export class BaseService<T extends {id: number, [key: string]: any}> {
   apiUrl: string = environment.apiUrl;
 
   entityName: string = '';
+  numOfValues: number = 0;
 
   constructor(
     public http: HttpClient,
@@ -43,6 +44,20 @@ export class BaseService<T extends {id: number, [key: string]: any}> {
     return  this.getAll().pipe(map(item => item.filter(i => i[property] == value).length))
    }
 
+  getPercentageOfValue(property: string, value: string | boolean): Observable<number> {
+    return this.getAll()
+    .pipe
+    (map
+      (
+        item => item
+        .map(item => item[property])
+        .reduce((prev,curr,index,array) => {
+          return (curr === value?((prev*array.length)+1)/array.length:prev)
+        },0)
+      )
+    );
+   }
+
    getSumOfProperty(property: string, value:string|boolean, toSum:string): Observable<number>{
     return this.getAll()
     .pipe
@@ -55,6 +70,7 @@ export class BaseService<T extends {id: number, [key: string]: any}> {
       )
     );
     }
+
 
     // filter(i => i[property] == value),
     // map(i => i[toSum]),

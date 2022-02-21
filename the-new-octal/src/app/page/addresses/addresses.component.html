@@ -6,17 +6,12 @@
           <div class="card-header card-header-info">
             <h4 class="card-title mt-0">Addresses</h4>
           </div>
-          <button (click)="edit(0)"  class="btn btn-success btn-block">
+          <button (click)="edit(0)" class="btn btn-success btn-block">
             <i class="material-icons">add</i>
             Create new address
           </button>
           <div class="form-group">
-            <input
-              [(ngModel)]="phrase"
-              type="text"
-              class="form-control"
-              placeholder="Search..."
-            />
+            <input [(ngModel)]="phrase" type="text" class="form-control" placeholder="Search..." />
           </div>
           <div class="input-group mb-3">
             <select
@@ -37,13 +32,11 @@
               <table class="table table-hover table-striped">
                 <thead class="">
                   <tr>
-                    <th *ngFor="let column of columns"
-                        class="clickable-column"
-                        [class.table-active]="sort === column.reference"
-                        (click)="onChangeOrder(column.reference)"
-                    >
+                    <th *ngFor="let column of columns" class="clickable-column"
+                      [class.table-active]="sort === column.reference" (click)="onChangeOrder(column.reference)">
                       <ng-container *ngIf="sort === column.reference">
-                        <span class="fa" [class.fa-arrow-down]="!descendingOrder" [class.fa-arrow-up]="descendingOrder"></span>
+                        <span class="fa" [class.fa-arrow-down]="!descendingOrder"
+                          [class.fa-arrow-up]="descendingOrder"></span>
                       </ng-container>
                       {{ column.message }}
                     </th>
@@ -84,3 +77,5 @@
     </div>
   </div>
 </div>
+
+<app-loading-animation-colors [list$]="list$"></app-loading-animation-colors>

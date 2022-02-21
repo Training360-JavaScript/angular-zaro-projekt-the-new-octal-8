@@ -31,6 +31,8 @@ import { EditOrderComponent } from './page/edit-order/edit-order.component';
 import { EditCategoryComponent } from './page/edit-category/edit-category.component';
 import { EditProductComponent } from './page/edit-product/edit-product.component';
 import { EditCustomerComponent } from './page/edit-customer/edit-customer.component';
+import { LoadingAnimationColorsComponent } from './common/loading-animation-colors/loading-animation-colors.component';
+import { LoadingEditComponent } from './common/loading-edit/loading-edit.component';
 import { SumPipe } from './pipe/sum.pipe';
 
 @NgModule({
@@ -58,7 +60,10 @@ import { SumPipe } from './pipe/sum.pipe';
     EditCategoryComponent,
     EditProductComponent,
     EditCustomerComponent,
+    LoadingAnimationColorsComponent,
+    LoadingEditComponent
     SumPipe
+
   ],
   imports: [
     BrowserModule,

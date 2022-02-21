@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +24,7 @@ import { CategoriesComponent } from './page/categories/categories.component';
 import { CustomersComponent } from './page/customers/customers.component';
 import { EditBillComponent } from './page/edit-bill/edit-bill.component';
 import { LimitPipe } from './pipe/limit.pipe';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { FilterAllPipe } from './pipe/filter-all.pipe';
 import { EditAddressComponent } from './page/edit-address/edit-address.component';
 import { EditOrderComponent } from './page/edit-order/edit-order.component';
@@ -61,9 +61,8 @@ import { SumPipe } from './pipe/sum.pipe';
     EditProductComponent,
     EditCustomerComponent,
     LoadingAnimationColorsComponent,
-    LoadingEditComponent
-    SumPipe
-
+    LoadingEditComponent,
+    SumPipe,
   ],
   imports: [
     BrowserModule,
@@ -72,9 +71,9 @@ import { SumPipe } from './pipe/sum.pipe';
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

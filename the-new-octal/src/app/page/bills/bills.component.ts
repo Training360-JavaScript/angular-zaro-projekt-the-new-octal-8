@@ -16,6 +16,8 @@ export class BillsComponent implements OnInit {
   descendingOrder: boolean = false;
   list$: Observable<Bill[]> = this.billService.getAll();
   public phrase: string = '';
+  searchKey: string = '';
+  searchValue: string = '';
 
   columns: TableColumn[] = [
     {reference: 'id', message: 'ID'},

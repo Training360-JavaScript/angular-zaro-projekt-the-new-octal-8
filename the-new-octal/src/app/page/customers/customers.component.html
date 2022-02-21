@@ -13,9 +13,23 @@
           <div class="form-group">
             <input [(ngModel)]="phrase" type="text" class="form-control" placeholder="Search..." />
           </div>
+          <div class="input-group mb-3">
+            <select
+              [(ngModel)]="searchKey"
+              class="custom-select"
+            >
+              <option *ngFor="let column of columns" [value]="column.reference">{{column.message}}</option>
+            </select>
+            <input
+              [(ngModel)]="searchValue"
+              type="text"
+              class="form-control"
+              placeholder="Search in field..."
+            />
+          </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead class="">
                   <tr>
                     <th *ngFor="let column of columns" class="clickable-column"
@@ -30,10 +44,9 @@
                     <th>DELETE</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr *ngFor="let item of list$ | async | sorter: sort:descendingOrder | filterAll: phrase">
-                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">
-                      {{ item[column.reference] }}</td>
+                <tbody *ngIf="(list$ | async) as list">
+                <tr *ngFor="let item of list | sorter: sort:descendingOrder | filter:searchValue:searchKey | filterAll: phrase">
+                    <td *ngFor="let column of columns" [class.table-active]="sort === column.reference">{{ item[column.reference] }}</td>
                     <td>
                       <button (click)="edit(item.id)" type="button" class="btn btn-success btn-link">
                         <i class="material-icons">edit</i>
@@ -46,6 +59,14 @@
                         Delete
                       </button>
                     </td>
+                  </tr>
+                  <tr>
+                    <ng-container *ngFor="let column of columns">
+                      <td class="font-weight-bold text-center h4" *ngIf="!column.reference.toLowerCase().includes('id'); else elseBlock">{{list | sum:column.reference}}</td>
+                      <ng-template #elseBlock><td></td></ng-template>
+                    </ng-container>
+                    <td></td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>

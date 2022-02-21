@@ -8,7 +8,7 @@
         <form #userForm="ngForm" (ngSubmit)="onSend(editedObject)">
           <input type="hidden" name="id" [(ngModel)]="editedObject.id">
           <div class="form-group">
-            <label for="i1ID">OrderID</label>
+            <label class="bmd-label-floating" for="i1ID">OrderID</label>
             <input id="i1ID" class="form-control" type="number" name="orderID" [(ngModel)]="editedObject.orderID"
               required>
             <div class="validation validation-danger" [hidden]="userForm.controls['orderID']?.valid">
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="i2ID">Amount</label>
+            <label class="bmd-label-floating" for="i2ID">Amount</label>
             <input id="i2ID" class="form-control" type="number" name="amount" [(ngModel)]="editedObject.amount"
               required>
             <div class="validation validation-danger" [hidden]="userForm.controls['amount']?.valid">
@@ -30,12 +30,18 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="i3ID">Status</label>
+            <label class="bmd-label-floating" for="i3ID">Status</label>
             <select id="i3ID" class="form-control" name="status" [(ngModel)]="editedObject.status" required>
               <option *ngFor="let value of listOfStatusValues" [value]="value">
                 {{value}}
               </option>
             </select>
+            <div class="validation validation-danger" [hidden]="userForm.controls['status']?.valid">
+              Status required
+            </div>
+            <div class="validation validation-success" [hidden]="userForm.controls['status']?.invalid">
+              Status OK
+            </div>
           </div>
           <button [disabled]="!userForm.valid" type="submit" class="btn btn-success btn-link mr-2"> <i
               class="material-icons">save</i>

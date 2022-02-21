@@ -8,7 +8,7 @@
         <form #userForm="ngForm" (ngSubmit)="onSend(editedObject)">
           <input type="hidden" name="id" [(ngModel)]="editedObject.id">
           <div class="form-group">
-            <label for="i1ID">Name</label>
+            <label class="bmd-label-floating" for="i1ID">Name</label>
             <input id="i1ID" class="form-control" type="text" name="name" [(ngModel)]="editedObject.name"
               pattern="^([A-Űa-ű]){2,}.*$" required>
             <div class="validation validation-danger" [hidden]="userForm.controls['name']?.valid">
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="i3ID">Description</label>
+            <label class="bmd-label-floating" for="i3ID">Description</label>
             <input id="i3ID" class="form-control" type="text" name="description" [(ngModel)]="editedObject.description"
               pattern="^([A-Űa-ű0-9]){1,}.*$" required>
             <div class="validation validation-danger" [hidden]="userForm.controls['name']?.valid">

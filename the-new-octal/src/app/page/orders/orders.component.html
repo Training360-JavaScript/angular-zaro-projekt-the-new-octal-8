@@ -35,8 +35,9 @@
                     <th *ngFor="let column of columns" class="clickable-column"
                       [class.table-active]="sort === column.reference" (click)="onChangeOrder(column.reference)">
                       <ng-container *ngIf="sort === column.reference">
-                        <span class="fa" [class.fa-arrow-down]="!descendingOrder"
-                          [class.fa-arrow-up]="descendingOrder"></span>
+                        <span class="fa" [class.fa-caret-down]="!descendingOrder"
+                          [class.fa-caret-up]="descendingOrder"></span>
+
                       </ng-container>
                       {{ column.message }}
                     </th>

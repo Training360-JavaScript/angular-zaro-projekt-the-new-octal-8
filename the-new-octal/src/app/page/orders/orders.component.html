@@ -37,6 +37,7 @@
                       <ng-container *ngIf="sort === column.reference">
                         <span class="fa" [class.fa-caret-down]="!descendingOrder"
                           [class.fa-caret-up]="descendingOrder"></span>
+
                       </ng-container>
                       {{ column.message }}
                     </th>
@@ -77,3 +78,5 @@
     </div>
   </div>
 </div>
+
+<app-loading-animation-colors [list$]="list$"></app-loading-animation-colors>
